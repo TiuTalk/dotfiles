@@ -8,6 +8,7 @@ PACMAN_PACKAGES=(
   starship
   z
   diff-so-fancy 
+  ttf-fira-code
 )
 
 AUR_PACKAGES=(

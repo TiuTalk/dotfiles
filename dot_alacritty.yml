@@ -113,7 +113,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: FuraCode Nerd Font Mono
+    family: FiraCode Nerd Font
 
     # The `style` can be specified to pick a specific face.
     style: Light
@@ -127,7 +127,7 @@ font:
     #family: monospace
 
     # The `style` can be specified to pick a specific face.
-    style: Normal
+    style: Regular
 
   # Italic font face
   #italic:
