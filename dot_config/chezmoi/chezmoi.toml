@@ -1,7 +1,0 @@
-[data]
-  name = "Thiago Belem"
-  email = "github@thiagobelem.net"
-
-[git]
-  autoCommit = true
-  autoPush = true
