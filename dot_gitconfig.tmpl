@@ -1,3 +1,18 @@
 [user]
   name = {{ .name | quote }}
   email = {{ .email | quote }}
+
+[pull]
+  rebase = true
+  autostash = true
+
+[rebase]
+  autoStash = true
+  instructionFormat = (%an <%ae>) %s
+  autoSquash = true
+
+[core]
+  pager = diff-so-fancy | less --tabs=4 -RFX
+
+[interactive]
+  diffFilter = diff-so-fancy --patch
