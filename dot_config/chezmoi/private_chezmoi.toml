@@ -1,0 +1,15 @@
+[data]
+  name = "Thiago Belem"
+  email = "github@thiagobelem.net"
+  signingkey = "028AF22A87FBDB3F"
+
+[diff]
+  pager = "diff-so-fancy"
+
+[merge]
+  command = "nvim"
+  args = ["-d", "{{ .Destination }}", "{{ .Source }}", "{{ .Target }}"]
+
+[git]
+  autoCommit = true
+  autoPush = true
