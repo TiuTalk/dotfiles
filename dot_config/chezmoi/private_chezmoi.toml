@@ -1,4 +1,4 @@
-[data]
+[data.user]
   name = "Thiago Belem"
   email = "github@thiagobelem.net"
   signingkey = "028AF22A87FBDB3F"
