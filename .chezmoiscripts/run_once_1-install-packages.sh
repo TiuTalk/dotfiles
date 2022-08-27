@@ -9,6 +9,7 @@ PACMAN_PACKAGES=(
   z
   diff-so-fancy 
   ttf-fira-code
+  age
 )
 
 AUR_PACKAGES=(
