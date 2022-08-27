@@ -1,7 +1,7 @@
 [user]
-  name = {{ .name | quote }}
-  email = {{ .email | quote }}
-  signingkey = {{ .signingkey }}
+  name = {{ .user.name | quote }}
+  email = {{ .user.email | quote }}
+  signingkey = {{ .user.signingkey }}
 
 [pull]
   rebase = true
