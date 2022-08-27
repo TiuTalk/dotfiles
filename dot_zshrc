@@ -1,0 +1,6 @@
+# ENV
+export EDITOR=nvim
+
+# Aliases
+
+. /opt/asdf-vm/asdf.sh
