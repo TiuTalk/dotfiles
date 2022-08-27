@@ -2,5 +2,8 @@
 export EDITOR=nvim
 
 # Aliases
+alias vi=vim
+alias vim=nvim
+alias chz=chezmoi
 
 . /opt/asdf-vm/asdf.sh
