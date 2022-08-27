@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+{{ if lookPath "yay" }}
+echo "Updating mirror list..."
+sudo reflector --save /etc/pacman.d/mirrorlist --verbose -c BR -c CL -c PY -c US --protocol https --sort rate --latest 10 --download-timeout 5
+
+echo "Updating packages..."
+yay
+{{ end }}
