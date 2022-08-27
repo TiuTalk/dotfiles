@@ -10,6 +10,7 @@ PACMAN_PACKAGES=(
   diff-so-fancy 
   ttf-fira-code
   age
+  postgresql-libs
 )
 
 AUR_PACKAGES=(
