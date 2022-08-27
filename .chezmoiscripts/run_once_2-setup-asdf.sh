@@ -14,6 +14,6 @@ asdf install nodejs lts
 asdf global nodejs lts
 
 # Install latest python
-asdf plugin add ptyhon
+asdf plugin add python
 asdf install python 3.10.6 2.7.18
 asdf global python 3.10.6 2.7.18
