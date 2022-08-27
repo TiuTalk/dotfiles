@@ -6,4 +6,9 @@ alias vi=vim
 alias vim=nvim
 alias chz=chezmoi
 
+# Initialize prompt
+eval "$(starship init zsh)"
+
+
+# Initialize asdf
 . /opt/asdf-vm/asdf.sh
