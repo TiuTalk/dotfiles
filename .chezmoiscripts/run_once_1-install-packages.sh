@@ -7,12 +7,13 @@ PACMAN_PACKAGES=(
   ripgrep
   starship
   z
-  diff-so-fancy 
+  diff-so-fancy
   ttf-fira-code
   age
   postgresql-libs
   docker
   docker-compose
+  xclip
 )
 
 AUR_PACKAGES=(
