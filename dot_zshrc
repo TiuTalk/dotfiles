@@ -16,7 +16,7 @@ alias vim=nvim
 alias chz=chezmoi
 
 # Initialize prompt
-[[ -x starship ]] && eval "$(starship init zsh)"
+[[ -x "$(which starship)" ]] && eval "$(starship init zsh)"
 
 # Initialize asdf
 [[ -r "/opt/asdf-vm/asdf.sh" ]] && source /opt/asdf-vm/asdf.sh
