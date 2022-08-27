@@ -11,6 +11,8 @@ PACMAN_PACKAGES=(
   ttf-fira-code
   age
   postgresql-libs
+  docker
+  docker-compose
 )
 
 AUR_PACKAGES=(

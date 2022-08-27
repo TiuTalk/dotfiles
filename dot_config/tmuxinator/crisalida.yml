@@ -1,7 +1,7 @@
 # /home/thiagobelem/.config/tmuxinator/crisalida.yml
 
 name: crisalida
-root: ~/projects/personal/crisalida
+root: ~/projects/crisalidamed/crisalida
 
 # Optional tmux socket
 # socket_name: foo
