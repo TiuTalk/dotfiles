@@ -21,6 +21,7 @@ alias tstart="tmuxinator start"
 alias tstop="tmuxinator stop"
 alias console="heroku run \"rails console -- --noautocomplete\""
 alias b="bundle exec"
+alias open="xdg-open"
 
 # Git aliases
 alias gst="git status"
