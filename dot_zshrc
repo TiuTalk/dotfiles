@@ -7,13 +7,25 @@ else
   source $HOME/.zsh_plugins.sh
 fi
 
+# Autocomplete
+autoload -Uz compinit && compinit
+
 # ENV
 export EDITOR=nvim
 
 # Aliases
-alias vi=vim
-alias vim=nvim
-alias chz=chezmoi
+alias vi="vim"
+alias vim="nvim"
+alias chz="chezmoi"
+alias tstart="tmuxinator start"
+alias tstop="tmuxinator stop"
+alias console="heroku run \"rails console -- --noautocomplete\""
+
+# Git aliases
+alias gst="git status"
+alias gco="git checkout"
+alias gp="git push"
+alias rebase="git checkout master; git pull --rebase; git checkout -; git rebase master"
 
 # Initialize prompt
 [[ -x "$(which starship)" ]] && eval "$(starship init zsh)"
