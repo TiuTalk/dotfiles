@@ -1,5 +1,20 @@
+# [character]
+# success_symbol = "[➜](bold green)"
+# error_symbol = "[➜](bold red)"
+
 [aws]
 disabled = true
 
 [lua]
 disabled = true
+
+[ruby]
+symbol = " "
+version_format = "${raw}"
+
+[nodejs]
+symbol = " "
+version_format = "${raw}"
+
+[git_branch]
+symbol = " "
