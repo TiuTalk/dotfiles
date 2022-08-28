@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+set -x
+
+WP_FILE=$HOME/.config/wallpaper.jpg
+URL="https://source.unsplash.com/3840x2160/?forest,satellite,aerial,mountains"
+
+wget -q -O "${WP_FILE}.tmp" $URL
+
+if [[ -f "${WP_FILE}.tmp" ]]; then
+  mv "${WP_FILE}.tmp" "${WP_FILE}"
+
+  if [[ -x "$(which xfconf-query)" ]]; then
+    # Change XCFE wallpaper
+    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorDisplayPort-1/workspace0/last-image --set $WP_FILE && \
+      xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorDisplayPort-2/workspace0/last-image --set $WP_FILE
+  elif [[ -x "$(which gsettings)" ]]; then
+    # Change Gnome wallpaper
+    gsettings set org.gnome.desktop.background picture-uri-dark file://$WP_FILE
+  fi
+
+  notify-send -i emblem-photos "Wallpaper" "Wallpaper changed" -h int:suppress-sound:1 -h int:transient:1
+fi
