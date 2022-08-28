@@ -9,23 +9,14 @@ PACMAN_PACKAGES=(
   z
   diff-so-fancy
   ttf-fira-code
-  age
   postgresql-libs
-  docker
-  docker-compose
   xclip
 )
 
 AUR_PACKAGES=(
-  1password
   antibody-bin
   asdf-vm
-  heroku-cli-bin
   nerd-fonts-fira-code
-  slack-desktop
-  spotify
-  whatsapp-nativefier
-  test1
 )
 
 INSTALLED=$(pacman -Qqme)
