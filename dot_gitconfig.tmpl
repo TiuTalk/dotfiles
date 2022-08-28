@@ -3,6 +3,9 @@
   email = {{ .user.email | quote }}
   signingkey = {{ .user.signingkey }}
 
+[commit]
+  gpgsign = true
+
 [pull]
   rebase = true
   autostash = true
