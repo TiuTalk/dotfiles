@@ -12,7 +12,7 @@ root: ~/projects/bonsai/bonsai
 # Project hooks
 
 # Runs on project start, always
-on_project_start: git fetch origin master && git pull --rebase && docker-compose -f ../docker-compose.yml up -d redis postgres && bundle
+on_project_start: docker-compose -f ../docker-compose.yml up -d redis postgres; git fetch origin master && git pull --rebase; bundle && bundle exec rails assets:clean tmp:clear log:clear
 
 # Run on project start, the first time
 # on_project_first_start: command
