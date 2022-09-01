@@ -1,6 +1,6 @@
 [user]
-  name = {{ .user.name | quote }}
-  email = {{ .user.email | quote }}
+  name = "{{ .user.name }}"
+  email = "{{ .user.email }}"
   signingkey = {{ .user.signingkey }}
 
 [commit]
@@ -20,3 +20,5 @@
 
 [interactive]
   diffFilter = diff-so-fancy --patch
+[add "interactive"]
+  useBuiltin = false
