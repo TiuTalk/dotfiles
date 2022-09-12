@@ -80,17 +80,23 @@ return packer.startup(function(use)
   use("andymass/vim-matchup")
 
   -- GitHub Copilot
-  use({ "zbirenbaum/copilot.lua", event = {"VimEnter"},
+  -- use({ 'github/copilot.vim' })
+  use({
+    "zbirenbaum/copilot.lua",
+    event = {"VimEnter"},
     config = function()
-      vim.defer_fn(function() require("copilot").setup({
-        cmp = {
-          enabled = true,
-          method = "getCompletionsCycling",
-        }
-      }) end, 100)
+      vim.defer_fn(function()
+        require("copilot").setup()
+      end, 100)
+    end,
+  })
+  use({
+    "zbirenbaum/copilot-cmp",
+    after = { "copilot.lua" },
+    config = function ()
+      require("copilot_cmp").setup()
     end
   })
-  use({ "zbirenbaum/copilot-cmp", module = "copilot_cmp" })
 
   -- Automatically set up your configuration after cloning packer.nvim
   if PACKER_BOOTSTRAP then
