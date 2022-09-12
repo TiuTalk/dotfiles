@@ -17,3 +17,4 @@ require("user/plugins/mason")
 
 require("user/plugins/telescope")
 require("user/plugins/treesitter")
+
