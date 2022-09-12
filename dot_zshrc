@@ -12,6 +12,7 @@ autoload -Uz compinit && compinit
 
 # ENV
 export EDITOR=nvim
+export PATH="$HOME/bin:$PATH"
 
 # Aliases
 alias vi="vim"
@@ -22,6 +23,7 @@ alias tstop="tmuxinator stop"
 alias console="heroku run \"rails console -- --noautocomplete\""
 alias b="bundle exec"
 alias open="xdg-open"
+alias fly="flyctl"
 
 # Git aliases
 alias gst="git status"
