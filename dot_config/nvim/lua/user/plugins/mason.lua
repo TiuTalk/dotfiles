@@ -54,13 +54,15 @@ mason_lspconfig.setup_handlers({
 local status_ok, null_ls = pcall(require, "null-ls")
 if not status_ok then return end
 
--- local diagnostics = null_ls.builtins.diagnostics
+local diagnostics = null_ls.builtins.diagnostics
 local formatting = null_ls.builtins.formatting
 
 null_ls.setup({
   log_level = "debug",
   sources = {
     -- diagnostics.eslint,
+    diagnostics.credo,
     formatting.prettier,
+    formatting.mix,
   },
 })
