@@ -24,6 +24,8 @@ alias console="heroku run \"rails console -- --noautocomplete\""
 alias b="bundle exec"
 alias open="xdg-open"
 alias fly="flyctl"
+alias hp="echo 'Setting Heroku account to [personal]'; heroku accounts:set personal"
+alias hb="echo 'Setting Heroku account to [bonsai]'; heroku accounts:set bonsai"
 
 # Git aliases
 alias gst="git status"

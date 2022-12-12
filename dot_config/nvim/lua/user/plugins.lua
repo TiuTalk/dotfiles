@@ -50,7 +50,7 @@ return packer.startup(function(use)
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
-    "jose-elias-alvarez/null-ls.nvim",
+    { "jose-elias-alvarez/null-ls.nvim", requires = { "nvim-lua/plenary.nvim" } }
   })
 
   -- LSP (lsp-installer)
@@ -76,6 +76,7 @@ return packer.startup(function(use)
   use({ 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' })
 
   -- Treesitter
+  use({"rupurt/vim-mql5", ft = {"mql5", "mq5"}})
   use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
   use("andymass/vim-matchup")
 

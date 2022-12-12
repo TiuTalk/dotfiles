@@ -14,11 +14,11 @@ lsp.ensure_installed({
 -- Format on save
 local null_opts = lsp.build_options('null-ls', {
   on_attach = function(client)
-    if client.resolved_capabilities.document_formatting then
+    if client.server_capabilities.document_formatting then
       vim.api.nvim_create_autocmd("BufWritePre", {
         desc = "Auto format before save",
         pattern = "<buffer>",
-        callback = vim.lsp.buf.formatting_sync,
+        callback = vim.lsp.buf.format,
       })
     end
   end
@@ -38,7 +38,7 @@ null_ls.setup({
 
 lsp.configure('tsserver', {
   on_attach = function(client, bufnr)
-    client.resolved_capabilities.document_formatting = false
+    client.server_capabilities.document_formatting = false
   end
 })
 

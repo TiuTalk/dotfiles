@@ -14,19 +14,12 @@ local illuminate = require("illuminate")
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
 local opts = {
-  capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+  capabilities = cmp_nvim_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
   on_attach = function(client, bufnr)
     illuminate.on_attach(client)
 
     -- Disable formatting through LSP
-    client.resolved_capabilities.document_formatting = false
-    -- if client.name == "tsserver" then
-    --   client.resolved_capabilities.document_formatting = false
-    -- end
-    --
-    -- if client.name == "solargraph" then
-    --   client.resolved_capabilities.document_formatting = false
-    -- end
+    client.server_capabilities.documentFormattingProvider = false
 
     vim.api.nvim_create_autocmd("BufWritePre", { command = [[Format]], buffer = bufnr })
   end,
@@ -49,7 +42,7 @@ local formatting = null_ls.builtins.formatting
 -- local diagnostics = null_ls.builtins.diagnostics
 
 null_ls.setup({
-  debug = true,
+  debug = false,
   sources = {
     formatting.prettier.with({ generator_opts = { cmd = "yarn prettier" } })
   },

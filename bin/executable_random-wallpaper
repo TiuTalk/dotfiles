@@ -1,24 +1,32 @@
 #!/usr/bin/env bash
 
+set -x
+
 # Wait for network
 while ! ping -c 1 -W 1 1.1.1.1 > /dev/null; do sleep 1; done
 
 WP_FILE=$HOME/.config/wallpaper.jpg
-URL="https://source.unsplash.com/3840x2160/?forest,satellite,aerial,mountains"
+API_KEY="hI3MbyL2u9CTYbS-yhsl9hwXiDOZTKxEZTMgYbX_ya8"
+URL="https://api.unsplash.com/photos/random?client_id=${API_KEY}&query=forest%20satellite%20aerial%20mountains&orientation=landscape"
 
-wget -q -O "${WP_FILE}.tmp" $URL
+PHOTO_URL=$(wget -q $URL -O - | jq -r '.links.download' -r)
+wget -q -O "${WP_FILE}.tmp" $PHOTO_URL
 
 if [[ -f "${WP_FILE}.tmp" ]]; then
   mv "${WP_FILE}.tmp" "${WP_FILE}"
 
   if [[ -x "$(which xfconf-query)" ]]; then
     # Change XCFE wallpaper
-    xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorDisplayPort-1/workspace0/last-image --set $WP_FILE && \
-      xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorDisplayPort-2/workspace0/last-image --set $WP_FILE
+    for screen in $(xfconf-query -c xfce4-desktop -p /backdrop -l | rg last-image); do
+      # echo "Setting wallpaper on screen $screen"
+      xfconf-query -c xfce4-desktop --property $screen --set $WP_FILE
+    done
   elif [[ -x "$(which gsettings)" ]]; then
     # Change Gnome wallpaper
     gsettings set org.gnome.desktop.background picture-uri-dark file://$WP_FILE
   fi
+
+  sleep 1
 
   notify-send -i emblem-photos "Wallpaper" "Wallpaper changed" -h int:suppress-sound:1 -h int:transient:1
 fi

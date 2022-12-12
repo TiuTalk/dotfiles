@@ -41,7 +41,7 @@ opt.completeopt = { 'menu', 'menuone', 'noselect' }
 opt.clipboard = "unnamed"
 opt.cmdheight = 1
 opt.fileencoding = "utf-8"
--- opt.mouse = "a"
+opt.mouse = "a"
 opt.showtabline = 2
 
 -- Disable backup fils

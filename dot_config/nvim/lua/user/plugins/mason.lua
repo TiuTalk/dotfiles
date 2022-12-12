@@ -22,18 +22,41 @@ local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not status_ok then return end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
+
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local lsp_defaults = vim.tbl_deep_extend('force', lspconfig.util.default_config, {
   capabilities = capabilities,
   on_attach = function(client, bufnr)
-    client.resolved_capabilities.document_formatting = false
+    if client.supports_method("textDocument/formatting") then
+      vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        group = augroup,
+        buffer = bufnr,
+        callback = function()
+          vim.lsp.buf.format({
+            timeout_ms = 1000,
+            bufnr = bufnr,
+            filter = function(client)
+              return client.name == "null-ls"
+            end,
+          })
+        end,
+      })
+    end
+
+    -- Disable document formatting globally
+    -- client.server_capabilities.documentFormattingProvider = false
 
     -- Format on save
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      command = [[Format]],
-      buffer = bufnr
-    })
+    -- vim.api.nvim_create_autocmd("BufWritePre", {
+    --   -- buffer = bufnr
+    --   pattern = { "*.js,*.jsx,*.exs" },
+    --   callback = function()
+    --     vim.lsp.buf.format({ timeout_ms = 500, async = false })
+    --   end,
+    -- })
   end
 })
 
@@ -58,11 +81,14 @@ local diagnostics = null_ls.builtins.diagnostics
 local formatting = null_ls.builtins.formatting
 
 null_ls.setup({
-  log_level = "debug",
+  debug = false,
   sources = {
-    -- diagnostics.eslint,
-    diagnostics.credo,
+    -- JS
+    diagnostics.eslint,
     formatting.prettier,
+
+    -- Elixir
+    diagnostics.credo,
     formatting.mix,
   },
 })
