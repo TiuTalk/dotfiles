@@ -6,7 +6,7 @@ set -x
 while ! ping -c 1 -W 1 1.1.1.1 > /dev/null; do sleep 1; done
 
 WP_FILE=$HOME/.config/wallpaper.jpg
-API_KEY="hI3MbyL2u9CTYbS-yhsl9hwXiDOZTKxEZTMgYbX_ya8"
+API_KEY="{{ .user.unsplash_api_key }}"
 URL="https://api.unsplash.com/photos/random?client_id=${API_KEY}&query=forest%20satellite%20aerial%20mountains&orientation=landscape"
 
 PHOTO_URL=$(wget -q $URL -O - | jq -r '.links.download' -r)
